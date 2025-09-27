@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   description: "Portfolio website of Siddharth Kolipaka",
 };
 
+<link rel="icon" href="/favicon.ico" sizes="any" />;
+
 export default function RootLayout({
   children,
 }: Readonly<{

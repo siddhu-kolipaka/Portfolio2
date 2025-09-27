@@ -13,3 +13,8 @@
 ::-webkit-scrollbar {
   width: 0px;
 }
+
+@theme {
+  --color-red: #b11226;
+  --color-gold: #e6b422;
+}
