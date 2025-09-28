@@ -3,8 +3,6 @@
 *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
   inset: 0;
@@ -17,16 +15,4 @@
 @theme {
   --color-red: #b11226;
   --color-gold: #e6b422;
-}
-
-/* Outline only */
-.text-stroke {
-  -webkit-text-stroke: 3px #3b82f6; /* blue-500 stroke */
-  color: transparent; /* makes it hollow */
-}
-
-/* Filled + stroke */
-.text-stroke-filled {
-  -webkit-text-stroke: 3px #3b82f6;
-  color: white; /* or any fill color */
 }

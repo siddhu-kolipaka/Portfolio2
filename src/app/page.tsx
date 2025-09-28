@@ -1,3 +1,4 @@
+"use client";
 import Slide1 from "@/_components/Slide1";
 import Slide2 from "@/_components/Slide2";
 import Slide3 from "@/_components/Slide3";
