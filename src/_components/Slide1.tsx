@@ -62,8 +62,9 @@ export default function Slide1() {
             O
           </motion.div>
         </div>
-        <div className="text-white">
-          {isLargeScreen ? "Hover" : "Tap"} everywhere to find easter eggs
+        <div className="text-white flex flex-col lg:flex-row justify-center items-center gap-1">
+          <div> {isLargeScreen ? "Hover" : "Tap"} everywhere</div>
+          <div> to find easter eggs</div>
         </div>
         <motion.div
           className={`flex items-center justify-center w-fit h-full ${bangers.className} text-2xl text-blue-400  `}
@@ -111,6 +112,7 @@ export default function Slide1() {
               height={200}
               priority
               onMouseEnter={() => setHov(true)}
+              onClick={() => setHov(true)}
               onMouseLeave={() => setHov(false)}
             />
           </motion.div>
@@ -131,10 +133,14 @@ export default function Slide1() {
 
       <motion.div
         className="absolute flex flex-col items-center justify-center w-full h-full z-70 "
-        animate={{ gap: hov ? "15rem" : "0rem", rotate: [0, 360] }}
+        animate={{ gap: hov ? "15rem" : "0rem", rotate: hov ? 0 : [0, 360] }}
         transition={{
           gap: { duration: 0.6, ease: "easeInOut" },
-          rotate: { duration: 10, repeat: Infinity, ease: "linear" },
+          rotate: {
+            duration: hov ? 0.2 : 10,
+            repeat: hov ? 0 : Infinity,
+            ease: "linear",
+          },
         }}
       >
         <motion.div
@@ -143,12 +149,16 @@ export default function Slide1() {
           animate={{
             y: ["-300%", "0%", "-30%"],
             opacity: [0, 0, 1],
-            rotate: [0, -360],
+            rotate: hov ? 0 : [0, -360],
           }}
           transition={{
             y: { duration: 2, ease: "easeInOut" },
             opacity: { duration: 1, ease: "linear" },
-            rotate: { duration: 10, repeat: Infinity, ease: "linear" },
+            rotate: {
+              duration: hov ? 0.2 : 10,
+              repeat: hov ? 0 : Infinity,
+              ease: "linear",
+            },
           }}
         >
           SIDDHARTH
@@ -160,12 +170,16 @@ export default function Slide1() {
           animate={{
             y: ["300%", "0%", "30%"],
             opacity: [0, 0, 1],
-            rotate: [0, -360],
+            rotate: hov ? 0 : [0, -360],
           }}
           transition={{
             y: { duration: 2, ease: "easeInOut" },
             opacity: { duration: 1, ease: "linear" },
-            rotate: { duration: 10, repeat: Infinity, ease: "linear" },
+            rotate: {
+              duration: hov ? 0.2 : 10,
+              repeat: hov ? 0 : Infinity,
+              ease: "linear",
+            },
           }}
         >
           KOLIPAKA
