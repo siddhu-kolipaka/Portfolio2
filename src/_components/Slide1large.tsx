@@ -13,13 +13,14 @@ const bangers = Bangers({
 
 export default function Slide1large() {
   const [hov, setHov] = useState(false);
-  const isLargeScreen = useMediaQuery("(min-width: 1024px)");
   const [logo, setLogo] = useState("SIKO");
+  const [logo2, setLogo2] = useState("Code By");
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setLogo((prevLogo) => (prevLogo === "SIKO" ? "PSYCHO" : "SIKO"));
-    }, 500);
+      setLogo2((prevLogo) => (prevLogo === "Code By" ? "Sid" : "Code By"));
+    }, 1000);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -27,7 +28,7 @@ export default function Slide1large() {
     <div className="w-full h-[100dvh] bg-black relative">
       <motion.div className="absolute w-full h-[10dvh] z-90 px-4 flex items-center justify-between">
         <div
-          className={`flex items-center justify-center w-20  h-full ${bangers.className} text-4xl `}
+          className={`flex items-center justify-center w-30 h-full ${bangers.className} text-4xl `}
         >
           <motion.div
             whileHover={{
@@ -35,23 +36,28 @@ export default function Slide1large() {
               color: "#ffffff",
             }}
             animate={{ opacity: [0, 1, 0] }}
-            transition={{ duration: 0.5, repeat: Infinity }}
-            className="select-none text-blue-400"
+            transition={{ duration: 1, repeat: Infinity }}
+            className={`select-none ${hov ? "text-white" : "text-blue-400"}`}
           >
             {logo}
           </motion.div>
         </div>
         <div className="text-white flex flex-col lg:flex-row justify-center items-center gap-1">
-          <div> {isLargeScreen ? "Hover" : "Tap"} everywhere</div>
-          <div> to find easter eggs</div>
+          <div className="uppercase">
+            {hov ? "" : "Hover everywhere to find surprises"}
+          </div>
         </div>
         <motion.div
-          className={`flex items-center justify-center w-fit h-full ${bangers.className} text-2xl text-blue-400  `}
+          className={`flex items-center justify-center h-full ${bangers.className} text-4xl w-30 text-blue-400  `}
           whileHover={{ color: "#ffffff" }}
-          animate={{ scale: [1, 1.05, 1] }}
-          transition={{ duration: 0.5, repeat: Infinity }}
+          animate={{ opacity: [0, 1, 0] }}
+          transition={{ duration: 1, repeat: Infinity }}
         >
-          <div>Code By Sid</div>
+          <div
+            className={`select-none ${hov ? "text-white" : "text-blue-400"}`}
+          >
+            {logo2}
+          </div>
         </motion.div>
       </motion.div>
 
@@ -84,7 +90,7 @@ export default function Slide1large() {
               scale: { duration: 1, ease: "easeInOut", repeat: Infinity },
               opacity: { duration: 0.2, ease: "easeInOut" },
             }}
-            className="absolute z-10 size-30 lg:size-50"
+            className="absolute z-10 size-30 lg:size-50 select-none"
             style={{
               translateX: "-50%",
               translateY: "-50%",
@@ -103,24 +109,12 @@ export default function Slide1large() {
               onMouseLeave={() => setHov(false)}
             />
           </motion.div>
-
-          {/* <motion.div
-            className="absolute bg-blue-500 size-50 blur-3xl"
-            animate={{ scale: [1, 1.2, 1], opacity: hov ? 0 : [1, 0.3, 1] }}
-            transition={{ duration: 1, ease: "easeInOut" }}
-            style={{
-              translateX: "-50%",
-              translateY: "-50%",
-              top: "50%",
-              left: "50%",
-            }}
-          /> */}
         </div>
       </motion.div>
 
       <motion.div
         className="absolute flex flex-col items-center justify-center w-full h-full z-70 mix-blend-difference"
-        animate={{ gap: hov ? "15rem" : "0rem", rotate: hov ? 0 : [0, 360] }}
+        animate={{ gap: hov ? "10rem" : "0rem", rotate: hov ? 0 : [0, 360] }}
         transition={{
           gap: { duration: 0.6, ease: "easeInOut" },
           rotate: {
@@ -131,12 +125,14 @@ export default function Slide1large() {
         }}
       >
         <motion.div
-          className={`text-7xl sm:text-8xl lg:text-9xl ${bangers.className} text-red `}
+          className={`text-[8rem]  ${bangers.className} text-red`}
           initial={{ y: "-300%", opacity: 0 }}
           animate={{
             y: ["-300%", "0%", "-30%"],
             opacity: [0, 0, 1],
-            rotate: hov ? 0 : [0, -360],
+            rotate: hov ? -2 : [0, -360],
+            scale: hov ? 1.7 : 1,
+            letterSpacing: hov ? "0.05em" : 0,
           }}
           transition={{
             y: { duration: 2, ease: "easeInOut" },
@@ -152,12 +148,14 @@ export default function Slide1large() {
         </motion.div>
 
         <motion.div
-          className={`text-7xl sm:text-8xl lg:text-9xl ${bangers.className} text-gold `}
+          className={`text-[8rem] ${bangers.className} text-gold`}
           initial={{ y: "300%", opacity: 0 }}
           animate={{
             y: ["300%", "0%", "30%"],
             opacity: [0, 0, 1],
-            rotate: hov ? 0 : [0, -360],
+            rotate: hov ? -2 : [0, -360],
+            scale: hov ? 1.7 : 1,
+            letterSpacing: hov ? "0.05em" : 0,
           }}
           transition={{
             y: { duration: 2, ease: "easeInOut" },

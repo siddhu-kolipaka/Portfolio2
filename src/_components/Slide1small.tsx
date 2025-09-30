@@ -94,18 +94,6 @@ export default function Slide1small() {
               onMouseLeave={() => setHov(false)}
             />
           </motion.div>
-
-          {/* <motion.div
-            className="absolute bg-blue-500 size-50 blur-3xl"
-            animate={{ scale: [1, 1.2, 1], opacity: hov ? 0 : [1, 0.3, 1] }}
-            transition={{ duration: 1, ease: "easeInOut" }}
-            style={{
-              translateX: "-50%",
-              translateY: "-50%",
-              top: "50%",
-              left: "50%",
-            }}
-          /> */}
         </div>
       </motion.div>
 
