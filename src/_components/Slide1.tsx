@@ -14,52 +14,26 @@ const bangers = Bangers({
 export default function Slide1() {
   const [hov, setHov] = useState(false);
   const isLargeScreen = useMediaQuery("(min-width: 1024px)");
+  const [logo, setLogo] = useState("SIKO");
+
+  setInterval(() => {
+    setLogo(logo === "SIKO" ? "PSYCHO" : "SIKO");
+  }, 500);
 
   return (
     <div className="w-full h-[100dvh] bg-black relative">
       <motion.div className="absolute w-full h-[10dvh] z-90 px-4 flex items-center justify-between">
         <div
-          className={`flex items-center justify-center w-fit h-full ${bangers.className} text-4xl `}
+          className={`flex items-center justify-center w-20  h-full ${bangers.className} text-4xl `}
         >
           <motion.div
             whileHover={{
-              scale: 1.3,
-              color: "#27D6F5",
-              padding: "0 0.25rem",
+              scale: 1.1,
+              color: "#ffffff",
             }}
-            className="select-none text-gold"
+            className="select-none text-blue-400"
           >
-            S
-          </motion.div>
-          <motion.div
-            whileHover={{
-              scale: 1.3,
-              color: "#27D6F5",
-              padding: "0 0.25rem",
-            }}
-            className="select-none text-red"
-          >
-            I
-          </motion.div>
-          <motion.div
-            whileHover={{
-              scale: 1.3,
-              color: "#27D6F5",
-              padding: "0 0.25rem",
-            }}
-            className="select-none text-gold"
-          >
-            K
-          </motion.div>
-          <motion.div
-            whileHover={{
-              scale: 1.3,
-              color: "#27D6F5",
-              padding: "0 0.25rem",
-            }}
-            className="select-none text-red"
-          >
-            O
+            {logo}
           </motion.div>
         </div>
         <div className="text-white flex flex-col lg:flex-row justify-center items-center gap-1">
