@@ -3,7 +3,6 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import { Bangers } from "next/font/google";
 import { useEffect, useState } from "react";
-import { useMediaQuery } from "@/_hooks/useMediaQuery";
 
 const bangers = Bangers({
   weight: "400",

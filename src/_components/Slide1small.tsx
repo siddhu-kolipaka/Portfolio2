@@ -1,8 +1,9 @@
 "use client";
 import { motion } from "motion/react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { Bangers } from "next/font/google";
 import { useState } from "react";
+import Menusmall from "./Menusmall";
 
 const bangers = Bangers({
   weight: "400",
@@ -12,6 +13,7 @@ const bangers = Bangers({
 
 export default function Slide1small() {
   const [hov, setHov] = useState(false);
+  const [open, setopen] = useState(false);
 
   return (
     <motion.div
@@ -19,30 +21,24 @@ export default function Slide1small() {
       className="w-full h-[100dvh] relative"
     >
       <motion.div className="absolute w-full h-[10dvh] z-90 px-4 flex items-center justify-between">
-        <div
+        <motion.div
           className={`flex items-center justify-center w-20  h-full ${bangers.className} text-4xl `}
         >
           <motion.div
             animate={{
               opacity: [0, 1],
-              color: hov ? "var(--color-white)" : "var(--color-blue-500)",
+              color: hov ? "#FFFFFF" : "#3B82F6",
             }}
             transition={{ duration: 2 }}
             className="select-none"
           >
             {hov ? "PSYCHO" : "SIKO"}
           </motion.div>
-        </div>
-
-        <motion.div
-          className={`flex items-center justify-center w-fit h-full ${bangers.className} text-sm  `}
-          animate={{
-            color: hov ? "var(--color-white)" : "var(--color-blue-500)",
-          }}
-          transition={{ duration: 1 }}
-        >
-          <div>Code By Sid</div>
         </motion.div>
+
+        <div className="text-white">Tap to find suprises</div>
+
+        <Menusmall hov={hov} open={open} setopen={setopen} />
       </motion.div>
 
       {/* Background image */}

@@ -9,10 +9,10 @@ export default function Home() {
   return (
     <div className="w-full overflow-x-hidden">
       <Slide1 />
-      <Slide2 />
+      {/* <Slide2 />
       <Slide3 />
       <Slide4 />
-      <Slide5 />
+      <Slide5 /> */}
     </div>
   );
 }
