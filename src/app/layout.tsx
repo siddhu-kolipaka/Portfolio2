@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import LoadingScreen from "@/_components/LoadingScreen";
 
 export const metadata: Metadata = {
   title: "Siddharth Kolipaka",
   description: "Portfolio website of Siddharth Kolipaka",
 };
-
-<link rel="icon" href="/favicon.ico" sizes="any" />;
 
 export default function RootLayout({
   children,
@@ -15,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={``}>{children}</body>
+      <body className={``}>
+        <LoadingScreen />
+        {children}
+      </body>
     </html>
   );
 }
