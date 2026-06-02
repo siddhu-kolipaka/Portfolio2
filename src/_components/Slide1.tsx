@@ -125,9 +125,8 @@ export default function Slide1() {
             <Image
               src="/arc-reactor.webp"
               alt="arc-reactor"
-              width={200}
-              height={200}
-              style={{ width: "auto", height: "auto" }}
+              fill
+              sizes="auto"
               priority
               onMouseEnter={() => setHov(true)}
               onClick={() => setHov(true)}
