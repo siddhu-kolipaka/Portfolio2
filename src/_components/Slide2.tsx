@@ -45,7 +45,7 @@ export default function Slide2() {
   ];
 
   return (
-    <div className="w-full min-h-[100dvh] bg-black text-white relative overflow-hidden flex flex-col justify-between p-4 md:p-6 lg:p-8 font-mono select-none">
+    <div id="about" className="w-full min-h-[100dvh] bg-black text-white relative overflow-hidden flex flex-col justify-between p-4 md:p-6 lg:p-8 font-mono select-none">
       {/* Background Holographic HUD Grids */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
         <svg width="100%" height="100%" className="absolute inset-0">
@@ -56,7 +56,7 @@ export default function Slide2() {
           </defs>
           <rect width="100%" height="100%" fill="url(#hud-grid)" />
         </svg>
-        
+
         {/* Large Rotating Compass Circle */}
         <motion.div
           animate={{ rotate: 360 }}
@@ -107,7 +107,7 @@ export default function Slide2() {
 
       {/* Bento Grid Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 flex-1 my-4 lg:my-5 z-10">
-        
+
         {/* BENTO CARD 1: Profile Summary (Tall, Column 1, Row 1 & 2) */}
         <motion.div
           initial={{ x: -60, opacity: 0 }}
@@ -121,13 +121,14 @@ export default function Slide2() {
               <h3 className={`${bangers.className} text-2xl lg:text-3xl text-cyan-400 tracking-wider mb-3 border-b border-cyan-500/20 pb-1.5`}>
                 [ CORE IDENTIFICATION ]
               </h3>
-              
+
               {/* Holographic Avatar Graphic Area */}
               <div className="w-full h-48 lg:h-[20rem] flex-grow bg-slate-950/20 rounded border border-dashed border-cyan-500/20 flex items-center justify-center relative mb-4 lg:mb-5 overflow-hidden">
                 <Image
-                  src="/image.jpg"
+                  src="/profile.jpg"
                   alt="Siddharth Kolipaka"
                   fill
+                  sizes="(max-width: 768px) 100vw, 400px"
                   className="object-cover transition-opacity duration-500"
                   priority
                 />
@@ -182,7 +183,7 @@ export default function Slide2() {
               <h3 className={`${bangers.className} text-2xl lg:text-3xl text-cyan-400 tracking-wider mb-2 border-b border-cyan-500/20 pb-1.5`}>
                 [ HOLOGRAPHIC TECH ARSENAL ]
               </h3>
-              
+
               <div className="flex-1 flex flex-col justify-between py-1 gap-y-3.5 lg:gap-y-0">
                 {/* Languages */}
                 <div>
@@ -268,12 +269,12 @@ export default function Slide2() {
             <h3 className={`${bangers.className} text-2xl lg:text-3xl text-cyan-400 tracking-wider mb-2.5 border-b border-cyan-500/20 pb-1.5`}>
               [ ACADEMY LOGS - EDUCATION ]
             </h3>
-            
+
             <div className="space-y-3.5 flex-1 flex flex-col justify-between">
               {/* Degree Node 1: B.Tech (Cyan theme) */}
               <div className="relative pl-5 lg:pl-6 border-l-2 border-cyan-500/30 group/node flex flex-col py-0.5 hover:bg-cyan-950/10 rounded-r transition-all duration-300">
                 <div className="absolute left-0 -translate-x-1/2 top-2.5 w-2.5 h-2.5 rounded-full bg-cyan-500 border border-black shadow-[0_0_6px_rgba(6,182,212,0.6)] group-hover/node:bg-cyan-400 transition-all duration-300"></div>
-                
+
                 <div className="flex justify-between items-start">
                   <div>
                     <span className="text-[8px] lg:text-[9px] text-cyan-500 font-bold tracking-widest block uppercase">SYS.DEGREE // NODE.01</span>
@@ -303,7 +304,7 @@ export default function Slide2() {
               {/* Degree Node 2: Intermediate 12th (Gold theme) */}
               <div className="relative pl-5 lg:pl-6 border-l-2 border-yellow-500/30 group/node flex flex-col py-0.5 hover:bg-yellow-950/10 rounded-r transition-all duration-300">
                 <div className="absolute left-0 -translate-x-1/2 top-2.5 w-2.5 h-2.5 rounded-full bg-yellow-500 border border-black shadow-[0_0_6px_rgba(234,179,8,0.6)] group-hover/node:bg-yellow-400 transition-all duration-300"></div>
-                
+
                 <div className="flex justify-between items-start">
                   <div>
                     <span className="text-[8px] lg:text-[9px] text-yellow-600 font-bold tracking-widest block uppercase">SYS.DEGREE // NODE.02</span>
@@ -333,7 +334,7 @@ export default function Slide2() {
               {/* Degree Node 3: SSC 10th (Red theme) */}
               <div className="relative pl-5 lg:pl-6 border-l-2 border-red-500/30 group/node flex flex-col py-0.5 hover:bg-red-950/10 rounded-r transition-all duration-300">
                 <div className="absolute left-0 -translate-x-1/2 top-2.5 w-2.5 h-2.5 rounded-full bg-red-500 border border-black shadow-[0_0_6px_rgba(239,68,68,0.6)] group-hover/node:bg-red-400 transition-all duration-300"></div>
-                
+
                 <div className="flex justify-between items-start">
                   <div>
                     <span className="text-[8px] lg:text-[9px] text-red-500 font-bold tracking-widest block uppercase">SYS.DEGREE // NODE.03</span>
@@ -375,7 +376,7 @@ export default function Slide2() {
             <h3 className={`${bangers.className} text-xl lg:text-2xl text-cyan-400 tracking-wider mb-3 border-b border-cyan-500/20 pb-1.5`}>
               [ CORE SYSTEM STABILITY DIAGNOSTICS ]
             </h3>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
               {stats.map((stat, i) => (
                 <div key={i} className="space-y-1.5 flex flex-col justify-center">

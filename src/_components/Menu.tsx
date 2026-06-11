@@ -58,12 +58,22 @@ const itemVariants = {
 const menuItems = [
     { id: "home", label: "HOME" },
     { id: "about", label: "ABOUT" },
+    { id: "stats", label: "STATS" },
     { id: "projects", label: "PROJECTS" },
-    { id: "contact", label: "CONTACT" },
-    { id: "skills", label: "SKILLS" }
+    { id: "contact", label: "CONTACT" }
 ] as const;
 
 export default function Menu({ menuOpen, setMenuOpen }: { menuOpen: boolean, setMenuOpen: (open: boolean) => void }) {
+    const handleScroll = (id: string) => {
+        setMenuOpen(false);
+        setTimeout(() => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        }, 300);
+    };
+
     return (
         <>
             <motion.div className="w-[100dvw] h-[100dvh] bg-black absolute z-99 overflow-hidden flex flex-col justify-between"
@@ -89,6 +99,7 @@ export default function Menu({ menuOpen, setMenuOpen }: { menuOpen: boolean, set
                         <motion.div
                             key={item.id}
                             variants={itemVariants}
+                            onClick={() => handleScroll(item.id)}
                             className={`group flex items-center justify-start px-8 md:px-16 h-[20%] w-full border-b border-white/5 cursor-pointer bg-white/[0.01] hover:bg-gradient-to-r hover:from-[#E21B22]/15 hover:to-[#005A9C]/5 border-l-8 border-l-transparent hover:border-l-[#E21B22] transition-colors duration-300 ${bangers.className} text-6xl md:text-8xl text-white/80 hover:text-white`}
                         >
                             <span className="transform group-hover:translate-x-4 transition-transform duration-300">

@@ -5,7 +5,6 @@
 *::after {
   box-sizing: border-box;
   scroll-behavior: smooth;
-  inset: 0;
 }
 
 ::-webkit-scrollbar {
@@ -15,4 +14,40 @@
 @theme {
   --color-red: #b11226;
   --color-gold: #e6b422;
+}
+
+/* Timeline Custom Styles to override global inset conflicts and guarantee centering/alignment */
+.timeline-line-normal {
+  position: absolute;
+  left: 16px !important;
+  right: auto !important;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+}
+
+.timeline-node-normal {
+  position: absolute;
+  left: 16px !important;
+  right: auto !important;
+  top: 6px !important;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+@media (min-width: 1024px) {
+  .timeline-line-normal {
+    left: 280px !important;
+  }
+  .timeline-node-normal {
+    left: 280px !important;
+    width: 18px;
+    height: 18px;
+    top: 6px !important;
+  }
 }
