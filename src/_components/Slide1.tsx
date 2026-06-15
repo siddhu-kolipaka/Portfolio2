@@ -4,7 +4,8 @@ import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { Bangers } from "next/font/google";
 import { useState, useEffect } from "react";
-import Menu from "./Menu";
+
+
 
 const bangers = Bangers({
   weight: "400",
@@ -12,9 +13,9 @@ const bangers = Bangers({
   variable: "--font-bangers",
 });
 
-export default function Slide1() {
+export default function Slide1({ setMenuOpen }: { setMenuOpen: (open: boolean) => void }) {
   const [hov, setHov] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -35,6 +36,7 @@ export default function Slide1() {
       }}
     >
 
+      {/* Absolute Navbar */}
       <motion.div
         id="navbar"
         className="absolute w-full h-[10dvh] z-90 px-4 flex items-center justify-between"
@@ -45,7 +47,6 @@ export default function Slide1() {
         >
           <motion.div
             className={`flex items-center justify-center w-25 h-full ${bangers.className} text-4xl text-white `}
-            whileHover={{ scale: 1.2 }}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -53,8 +54,6 @@ export default function Slide1() {
               fill="none"
               className="w-full h-auto drop-shadow-[0_0_25px_rgba(230,180,34,0.15)]"
             >
-
-
               <motion.path
                 d="
             M42 339
@@ -88,8 +87,6 @@ export default function Slide1() {
                   delay: 0.5,
                 }}
               />
-
-
             </svg>
           </motion.div>
         </div>
@@ -97,15 +94,17 @@ export default function Slide1() {
         <div
           className={`flex items-center justify-center w-30 h-full ${bangers.className} text-4xl text-white `}
         >
-          <button
-            className={`flex items-center justify-center w-30 h-full ${bangers.className} text-4xl`}
+          <motion.button
+            className={`flex items-center justify-center w-30 h-full ${bangers.className} text-4xl cursor-pointer`}
             onClick={(e) => {
               e.stopPropagation();
               setMenuOpen(true);
             }}
+            whileHover={{ scale: 1.2 }}
+            transition={{ duration: 0.1 }}
           >
             MENU
-          </button>
+          </motion.button>
         </div>
       </motion.div>
 
@@ -127,7 +126,7 @@ export default function Slide1() {
 
       <motion.div
         id="arc-reactor-container"
-        animate={{ opacity: isMobile && hov ? 0 : 1 }}
+        animate={{ opacity: hov ? 0 : 1 }}
         transition={{ duration: 0.2 }}
         className="absolute z-80 select-none size-28 lg:size-50"
         style={{
@@ -225,10 +224,6 @@ export default function Slide1() {
         >
           KOLIPAKA
         </motion.div>
-      </motion.div>
-
-      <motion.div id="menu">
-        <Menu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       </motion.div>
     </div>
   );

@@ -36,6 +36,74 @@ function TechBadge({ name, glowColor }: TechBadgeProps) {
   );
 }
 
+const TECH_CATEGORIES = [
+  {
+    title: "LANGUAGES CORE",
+    titleColorClass: "text-cyan-500",
+    badges: [
+      { name: "C++", glowColor: "cyan" as const },
+      { name: "TypeScript", glowColor: "cyan" as const },
+      { name: "JavaScript", glowColor: "cyan" as const },
+      { name: "Python", glowColor: "cyan" as const },
+      { name: "Java", glowColor: "cyan" as const },
+      { name: "C", glowColor: "cyan" as const },
+    ],
+  },
+  {
+    title: "FRONTEND SYSTEMS",
+    titleColorClass: "text-purple-400",
+    badges: [
+      { name: "NextJS", glowColor: "purple" as const },
+      { name: "ReactJS", glowColor: "purple" as const },
+      { name: "Redux", glowColor: "purple" as const },
+      { name: "Framer Motion", glowColor: "purple" as const },
+      { name: "Tailwind CSS", glowColor: "purple" as const },
+      { name: "HTML", glowColor: "purple" as const },
+      { name: "CSS", glowColor: "purple" as const },
+    ],
+  },
+  {
+    title: "BACKEND & DATABASES",
+    titleColorClass: "text-orange-400",
+    badges: [
+      { name: "Node.js", glowColor: "orange" as const },
+      { name: "Express.js", glowColor: "orange" as const },
+      { name: "Spring", glowColor: "orange" as const },
+      { name: "Spring Boot", glowColor: "orange" as const },
+      { name: "MongoDB", glowColor: "orange" as const },
+      { name: "MySQL", glowColor: "orange" as const },
+    ],
+  },
+  {
+    title: "DATA SCIENCE & MACHINE LEARNING",
+    titleColorClass: "text-red-500",
+    badges: [
+      { name: "NumPy", glowColor: "red" as const },
+      { name: "Pandas", glowColor: "red" as const },
+      { name: "Scikit-learn", glowColor: "red" as const },
+      { name: "Pytorch", glowColor: "red" as const },
+      { name: "TensorFlow", glowColor: "red" as const },
+      { name: "Keras", glowColor: "red" as const },
+
+    ],
+  },
+  {
+    title: "TOOLS & PLATFORMS",
+    titleColorClass: "text-emerald-400",
+    badges: [
+      { name: "Postman", glowColor: "emerald" as const },
+      { name: "Git", glowColor: "emerald" as const },
+      { name: "GitHub", glowColor: "emerald" as const },
+      { name: "Netlify", glowColor: "emerald" as const },
+      { name: "Render", glowColor: "emerald" as const },
+      { name: "VS Code", glowColor: "emerald" as const },
+      { name: "Figma", glowColor: "emerald" as const },
+      { name: "Antigravity", glowColor: "emerald" as const },
+      { name: "Overleaf", glowColor: "emerald" as const },
+    ],
+  },
+];
+
 export default function Slide2() {
   // Diagnostic stats to display as HUD progress bars
   const stats = [
@@ -65,7 +133,7 @@ export default function Slide2() {
         >
           <div className="w-[90%] h-[90%] border border-dashed border-cyan-500/5 rounded-full flex items-center justify-center">
             <div className="w-[80%] h-[80%] border border-cyan-500/10 rounded-full flex items-center justify-center">
-              <span className="text-[8px] text-cyan-500/20 tracking-[1em] uppercase">Stark Academic Node</span>
+              <span className="text-[8px] text-cyan-500/20 tracking-[1em] uppercase">Academic Node</span>
             </div>
           </div>
         </motion.div>
@@ -185,73 +253,18 @@ export default function Slide2() {
               </h3>
 
               <div className="flex-1 flex flex-col justify-between py-1 gap-y-3.5 lg:gap-y-0">
-                {/* Languages */}
-                <div>
-                  <span className="text-[8px] lg:text-[9px] text-cyan-500 block mb-1.5 uppercase font-bold tracking-wider">LANGUAGES CORE</span>
-                  <div className="flex flex-wrap gap-1.5 lg:gap-2">
-                    <TechBadge name="C++" glowColor="cyan" />
-                    <TechBadge name="Python" glowColor="cyan" />
-                    <TechBadge name="JavaScript" glowColor="cyan" />
-                    <TechBadge name="ES6" glowColor="cyan" />
-                    <TechBadge name="TypeScript" glowColor="cyan" />
-                    <TechBadge name="Java" glowColor="cyan" />
-                    <TechBadge name="C" glowColor="cyan" />
-                    <TechBadge name="MySQL (RDBMS)" glowColor="cyan" />
+                {TECH_CATEGORIES.map((category, idx) => (
+                  <div key={idx}>
+                    <span className={`text-[8px] lg:text-[9px] ${category.titleColorClass} block mb-1.5 uppercase font-bold tracking-wider`}>
+                      {category.title}
+                    </span>
+                    <div className="flex flex-wrap gap-1.5 lg:gap-2">
+                      {category.badges.map((badge, bIdx) => (
+                        <TechBadge key={bIdx} name={badge.name} glowColor={badge.glowColor} />
+                      ))}
+                    </div>
                   </div>
-                </div>
-
-                {/* Frontend */}
-                <div>
-                  <span className="text-[8px] lg:text-[9px] text-purple-400 block mb-1.5 uppercase font-bold tracking-wider">FRONTEND SYSTEMS</span>
-                  <div className="flex flex-wrap gap-1.5 lg:gap-2">
-                    <TechBadge name="ReactJS" glowColor="purple" />
-                    <TechBadge name="NextJS" glowColor="purple" />
-                    <TechBadge name="Redux" glowColor="purple" />
-                    <TechBadge name="Framer Motion" glowColor="purple" />
-                    <TechBadge name="Tailwind CSS" glowColor="purple" />
-                    <TechBadge name="Shadcn UI" glowColor="purple" />
-                    <TechBadge name="HTML" glowColor="purple" />
-                    <TechBadge name="CSS" glowColor="purple" />
-                    <TechBadge name="Bootstrap" glowColor="purple" />
-                  </div>
-                </div>
-
-                {/* Backend & Databases */}
-                <div>
-                  <span className="text-[8px] lg:text-[9px] text-orange-400 block mb-1.5 uppercase font-bold tracking-wider">BACKEND & DATABASES</span>
-                  <div className="flex flex-wrap gap-1.5 lg:gap-2">
-                    <TechBadge name="Node.js" glowColor="orange" />
-                    <TechBadge name="Express.js" glowColor="orange" />
-                    <TechBadge name="Spring" glowColor="orange" />
-                    <TechBadge name="Spring Boot" glowColor="orange" />
-                    <TechBadge name="MongoDB" glowColor="orange" />
-                  </div>
-                </div>
-
-                {/* Data Science & ML */}
-                <div>
-                  <span className="text-[8px] lg:text-[9px] text-red-500 block mb-1.5 uppercase font-bold tracking-wider">DATA SCIENCE & MACHINE LEARNING</span>
-                  <div className="flex flex-wrap gap-1.5 lg:gap-2">
-                    <TechBadge name="NumPy" glowColor="red" />
-                    <TechBadge name="Pandas" glowColor="red" />
-                    <TechBadge name="Scikit-learn" glowColor="red" />
-                    <TechBadge name="Pytorch" glowColor="red" />
-                  </div>
-                </div>
-
-                {/* Tools & Platforms */}
-                <div>
-                  <span className="text-[8px] lg:text-[9px] text-emerald-400 block mb-1.5 uppercase font-bold tracking-wider">TOOLS & PLATFORMS</span>
-                  <div className="flex flex-wrap gap-1.5 lg:gap-2">
-                    <TechBadge name="Postman" glowColor="emerald" />
-                    <TechBadge name="Git" glowColor="emerald" />
-                    <TechBadge name="GitHub" glowColor="emerald" />
-                    <TechBadge name="Netlify" glowColor="emerald" />
-                    <TechBadge name="Render" glowColor="emerald" />
-                    <TechBadge name="VS Code" glowColor="emerald" />
-                    <TechBadge name="Figma" glowColor="emerald" />
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -283,7 +296,7 @@ export default function Slide2() {
                   </div>
                   <div className="text-right">
                     <span className="text-[8px] lg:text-[9px] text-slate-500 font-bold block uppercase">STABILITY</span>
-                    <span className="text-xs lg:text-sm font-bold text-cyan-400 font-mono tracking-wider">9.44 / 10 CGPA</span>
+                    <span className="text-xs lg:text-sm font-bold text-cyan-400 font-mono tracking-wider">9.46 / 10 CGPA</span>
                   </div>
                 </div>
 
@@ -309,7 +322,7 @@ export default function Slide2() {
                   <div>
                     <span className="text-[8px] lg:text-[9px] text-yellow-600 font-bold tracking-widest block uppercase">SYS.DEGREE // NODE.02</span>
                     <h4 className="text-xs lg:text-sm font-bold text-white uppercase group-hover/node:text-yellow-300 transition-colors">Intermediate (12th)</h4>
-                    <p className="text-[9px] lg:text-[10px] text-yellow-500/80 font-medium">MPC Sector</p>
+                    <p className="text-[9px] lg:text-[10px] text-yellow-500/80 font-medium">TSBIE Board</p>
                   </div>
                   <div className="text-right">
                     <span className="text-[8px] lg:text-[9px] text-slate-500 font-bold block uppercase">EFFICIENCY</span>
@@ -416,7 +429,7 @@ export default function Slide2() {
         className="w-full flex flex-col sm:flex-row items-center justify-between border-t border-cyan-500/30 pt-3 text-[9px] lg:text-[10px] text-cyan-500/80 font-mono z-10 gap-2 mt-2"
       >
         <span className="tracking-widest">
-          STARK CORE INTELNODE v4.81.0 // SECURITY CORE APPROVED
+          CORE INTELNODE v4.81.0 // SECURITY CORE APPROVED
         </span>
         <span className="tracking-[0.2em]">
           COORDINATES: SLIDE_02_ACTIVE // COMPILING_SUCCESS

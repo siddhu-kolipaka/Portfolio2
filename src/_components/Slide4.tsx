@@ -43,27 +43,27 @@ const EXPERIENCES = [
   {
     role: "Advanced Application Engineer",
     company: "Accenture India",
-    duration: "July 2024 - Present",
-    totalTime: "1 Yr 11 Mos",
-    description: "Architecting high-performance client architectures with Next.js 15, React 19, and Tailwind CSS. Restructuring complex state-management patterns to eliminate rendering blocks (improving efficiency by 40%), and developing scalable APIs integrated with vector databases for semantic data retrieval.",
+    duration: "Joining on July 24, 2026",
+    totalTime: "Yet to join",
+    description: "Yet to join",
     color: "purple" as const,
     indexStr: "SYS.EXP // 01",
   },
   {
-    role: "Deep Learning Researcher",
-    company: "AI & ML Collaborations",
-    duration: "Sept 2023 - June 2024",
+    role: "ML Researcher",
+    company: "IIEST, Shibpur",
+    duration: "Aug 2025 - May 2026",
     totalTime: "10 Mos",
-    description: "Leading the development of multi-modal AI classification networks combining text and visual heuristics using Contrastive Language-Image Pretraining (CLIP). Implementing high-throughput similarity lookup pipelines via FAISS (Facebook AI Similarity Search) to index millions of text-image vectors with sub-10ms query latencies.",
+    description: "Led the development of multi-modal fake news detection networks combining text and images using state of the art models like CLIP. Implementing high-throughput similarity search pipelines to index millions of text-image vectors. Using transformers for creating evidence based context aware embeddings. Compiled 2 research papers.",
     color: "pink" as const,
     indexStr: "SYS.EXP // 02",
   },
   {
-    role: "Full Stack Developer Intern",
-    company: "Software Systems",
-    duration: "June 2023 - Aug 2023",
-    totalTime: "3 Mos",
-    description: "Built interactive web dashboards and real-time visualization interfaces using MongoDB, Express, React, and Node.js (MERN stack). Integrated secure REST APIs and improved application loading metrics by 25% through lazy loading and script bundle optimizations.",
+    role: "Advanced Application Engineering Analyst Intern",
+    company: "Accenture India",
+    duration: "May 2025 - July 2025",
+    totalTime: "2 Mos",
+    description: "Proposed an improved AI-driven brainstorming framework after evaluating 3+ existing tools and models. Analyzed 3+ fintech platforms to propose enhancements and additions to current Banking-as-a-Service architectures. Presented 2 strategic solutions to senior engineers, highlighting opportunities for digital innovation.",
     color: "cyan" as const,
     indexStr: "SYS.EXP // 03",
   },
@@ -150,13 +150,13 @@ const LAUNCH_BUTTON_STYLES = {
 export default function Slide4() {
   const containerRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
-  
+
   // Track scroll specifically for the timeline wrapper to ensure progress bar completes
   const { scrollYProgress } = useScroll({
     target: timelineRef,
     offset: ["start center", "end center"],
   });
-  
+
   const scaleY = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -188,7 +188,7 @@ export default function Slide4() {
         >
           <div className="w-[90%] h-[90%] border border-dashed border-purple-500/5 rounded-full flex items-center justify-center">
             <div className="w-[80%] h-[80%] border border-purple-500/10 rounded-full flex items-center justify-center">
-              <span className="text-[8px] text-purple-500/20 tracking-[1em] uppercase">Stark Repository Center</span>
+              <span className="text-[8px] text-purple-500/20 tracking-[1em] uppercase">Repository Center</span>
             </div>
           </div>
         </motion.div>
@@ -230,16 +230,16 @@ export default function Slide4() {
 
       {/* Main Stacked Layout (Full Width & Dynamic Height) */}
       <div className="flex flex-col gap-10 flex-1 my-6 z-10">
-        
+
         {/* SECTION 1: Normal Long Timeline with Date on Left, Details on Right */}
         <div className="w-full md:w-[80%] mx-auto border border-purple-500/20 bg-slate-950/40 backdrop-blur-md rounded-xl p-4 md:p-6 relative overflow-hidden flex flex-col">
           <h3 className={`${bangers.className} text-3xl text-purple-400 tracking-wider mb-8 border-b border-purple-500/20 pb-2`}>
             [ MISSION TIMELINE ]
           </h3>
-          
+
           {/* Normal Timeline Wrapper */}
           <div ref={timelineRef} className="relative w-full py-4 min-h-[400px]">
-            
+
             {/* Left Timeline Line (grows scroll-triggered) */}
             <div className="timeline-line-normal bg-slate-800 rounded">
               <motion.div
@@ -247,7 +247,7 @@ export default function Slide4() {
                 className="w-full h-full bg-purple-500 origin-top shadow-[0_0_8px_rgba(168,85,247,0.8)]"
               />
             </div>
- 
+
             {/* Experience Items (long space-y layout) */}
             <div className="space-y-16 lg:space-y-24">
               {EXPERIENCES.map((exp, idx) => (
@@ -257,12 +257,12 @@ export default function Slide4() {
                 >
                   {/* Timeline Pulse Node (centered on line) */}
                   <div className="timeline-node-normal rounded-full bg-slate-950 border-2 border-purple-500 flex items-center justify-center shadow-[0_0_10px_rgba(168,85,247,0.4)]">
-                    <motion.div 
+                    <motion.div
                       animate={{ scale: [1, 1.4, 1] }}
                       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                       className="absolute inset-0 rounded-full border border-purple-400/50 pointer-events-none"
                     />
-                    <motion.div 
+                    <motion.div
                       initial={{ scale: 0.5 }}
                       whileInView={{ scale: 1 }}
                       viewport={{ once: true }}
@@ -317,7 +317,7 @@ export default function Slide4() {
                         {exp.role}
                       </h4>
                       <p className="text-[10px] lg:text-xs text-yellow-500 font-bold uppercase tracking-widest">
-                        ACCENTNODE // {exp.company}
+                        {exp.company}
                       </p>
                     </div>
 
@@ -408,7 +408,7 @@ export default function Slide4() {
         className="w-full flex flex-col sm:flex-row items-center justify-between border-t border-purple-500/30 pt-4 text-[10px] text-purple-500/80 font-mono z-10 gap-2 mt-4"
       >
         <span className="tracking-widest">
-          STARK CORE INTELNODE v4.81.0 // SECURITY CORE APPROVED
+          CORE INTELNODE v4.81.0 // SECURITY CORE APPROVED
         </span>
         <span className="tracking-[0.2em]">
           COORDINATES: SLIDE_04_ACTIVE // COMPILING_SUCCESS

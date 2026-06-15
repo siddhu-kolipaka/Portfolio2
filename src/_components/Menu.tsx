@@ -76,7 +76,8 @@ export default function Menu({ menuOpen, setMenuOpen }: { menuOpen: boolean, set
 
     return (
         <>
-            <motion.div className="w-[100dvw] h-[100dvh] bg-black absolute z-99 overflow-hidden flex flex-col justify-between"
+            <motion.div className="w-[100dvw] h-[100dvh] bg-black fixed top-0 left-0 z-99 overflow-hidden flex flex-col justify-between"
+                style={{ pointerEvents: menuOpen ? "auto" : "none" }}
                 variants={menuVariants}
                 initial="closed"
                 animate={menuOpen ? "open" : "closed"}

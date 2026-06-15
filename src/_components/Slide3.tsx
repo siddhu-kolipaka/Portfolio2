@@ -244,7 +244,7 @@ export default function Slide3() {
       color: "orange" as const,
     },
     {
-      title: "CodeChef 3-Star Coder",
+      title: "CodeChef 3-Star",
       organization: "CodeChef",
       description: "Reached 3-Star Coder status with a peak rating of 1613.",
       date: "Q1 2025",
@@ -300,7 +300,7 @@ export default function Slide3() {
         >
           <div className="w-[90%] h-[90%] border border-dashed border-red-500/5 rounded-full flex items-center justify-center">
             <div className="w-[80%] h-[80%] border border-red-500/10 rounded-full flex items-center justify-center">
-              <span className="text-[8px] text-red-500/20 tracking-[1em] uppercase">Stark Mission Deployer</span>
+              <span className="text-[8px] text-red-500/20 tracking-[1em] uppercase">Mission Deployer</span>
             </div>
           </div>
         </motion.div>
@@ -445,7 +445,7 @@ export default function Slide3() {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="lg:col-span-2 border border-red-500/20 hover:border-red-500/40 bg-slate-950/40 backdrop-blur-md rounded-xl p-5 relative overflow-hidden shadow-[0_0_15px_rgba(239,68,68,0.08)] hover:shadow-[0_0_30px_rgba(239,68,68,0.4)] transition-all duration-500 group flex flex-col"
+          className="lg:col-span-2 border border-red-500/20  bg-slate-950/40 backdrop-blur-md rounded-xl p-5 relative overflow-hidden  group flex flex-col"
         >
           <div>
             <h3 className={`${bangers.className} text-4xl text-red-400 tracking-wider mb-4 border-b border-red-500/20 pb-2`}>
@@ -495,7 +495,7 @@ export default function Slide3() {
         className="w-full flex flex-col sm:flex-row items-center justify-between border-t border-red-500/30 pt-4 text-[10px] text-red-500/80 font-mono z-10 gap-2 mt-4"
       >
         <span className="tracking-widest">
-          STARK CORE INTELNODE v4.81.0 // SECURITY CORE APPROVED
+          CORE INTELNODE v4.81.0 // SECURITY CORE APPROVED
         </span>
         <span className="tracking-[0.2em]">
           COORDINATES: SLIDE_03_ACTIVE // COMPILING_SUCCESS

@@ -169,7 +169,7 @@ export default function Slide5() {
                       GitHub
                     </a>
                     <span className="text-slate-600">|</span>
-                    <a href="https://linkedin.com/in/siddhu-kolipaka" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline font-bold text-sm">
+                    <a href="https://www.linkedin.com/in/siddharth-kolipaka" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline font-bold text-sm">
                       LinkedIn
                     </a>
                   </div>
@@ -301,7 +301,7 @@ export default function Slide5() {
       {/* Footer */}
       <footer className="w-full border-t border-gold/20 pt-4 flex flex-col sm:flex-row items-center justify-between text-[10px] text-slate-500 z-10 gap-2 font-mono">
         <span>&copy; {new Date().getFullYear()} Siddharth Kolipaka</span>
-        <span>STARK PORTFOLIO CORE // LIVE</span>
+        <span>PORTFOLIO CORE // LIVE</span>
       </footer>
 
     </div>
