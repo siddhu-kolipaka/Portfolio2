@@ -29,7 +29,7 @@ function TechBadge({ name, glowColor }: TechBadgeProps) {
   return (
     <motion.span
       whileHover={{ scale: 1.05 }}
-      className={`px-2 py-1 text-[10px] lg:text-xs font-mono rounded border transition-all duration-300 cursor-default select-none ${glowClasses[glowColor]}`}
+      className={`px-2 py-1 text-[10px] lg:text-xs font-mono rounded border transition-[border-color,background-color,box-shadow] duration-300 cursor-default select-none ${glowClasses[glowColor]}`}
     >
       {name}
     </motion.span>

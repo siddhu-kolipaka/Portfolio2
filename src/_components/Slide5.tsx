@@ -10,19 +10,6 @@ const bangers = Bangers({
 });
 
 export default function Slide5() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
-  const [loading, setLoading] = useState(false);
-  const [statusMsg, setStatusMsg] = useState<{ type: "success" | "error" | null; text: string }>({
-    type: null,
-    text: "",
-  });
-
   const [views, setViews] = useState({ views: 0, uniqueViews: 0 });
 
   useEffect(() => {
@@ -45,50 +32,8 @@ export default function Slide5() {
       .catch(() => { });
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
-      setStatusMsg({ type: "error", text: "Please fill in all fields." });
-      return;
-    }
-
-    setLoading(true);
-    setStatusMsg({ type: null, text: "" });
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
-
-      if (res.ok) {
-        setStatusMsg({
-          type: "success",
-          text: data.isDemo
-            ? "Message sent successfully!"
-            : "Message sent successfully!",
-        });
-        setFormData({ name: "", email: "", subject: "", message: "" });
-      } else {
-        setStatusMsg({ type: "error", text: data.error || "Something went wrong." });
-      }
-    } catch {
-      setStatusMsg({ type: "error", text: "Could not connect to the server. Please try again." });
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <div id="contact" className="w-full min-h-[100dvh] h-auto bg-black text-white relative overflow-hidden flex flex-col justify-between p-4 md:p-8 font-mono select-none">
+    <div id="contact" className="w-full min-h-[100dvh] h-auto bg-black text-white relative overflow-hidden flex flex-col justify-between pt-12 px-4 pb-4 md:p-8 font-mono">
 
       {/* Background Holographic HUD Grids with Gold Theme */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
@@ -120,179 +65,147 @@ export default function Slide5() {
       {/* Header */}
       <div className="w-full flex items-center justify-between border-b border-gold pb-4 z-10">
         <div>
-          <h2 className="text-xs text-gold tracking-[0.25em] font-bold">CONTACT // SLIDE 05</h2>
+          <h2 className="text-[10px] md:text-xs text-gold tracking-[0.25em] font-bold uppercase">
+            SECURE ACCESS CORE // SYSTEM NODE 05
+          </h2>
           <h1 className="text-xl font-bold text-white mt-1 uppercase flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-gold animate-pulse" />
             GET IN TOUCH
           </h1>
         </div>
         <div className="text-right text-xs text-emerald-400 font-bold tracking-widest">
-          ONLINE
+           ONLINE
         </div>
       </div>
 
-      {/* Main Content Grid (Fullscreen Layout) */}
-      <div className="flex-1 flex items-stretch my-6 lg:my-8 z-10 max-w-7xl w-full mx-auto">
-        <div className="w-full border border-gold/30 rounded-xl p-6 md:p-8 lg:p-10 bg-transparent flex flex-col justify-between">
+      {/* Main Content Grid (Balanced Left/Right Bento Grid Stack) */}
+      <div className="flex-grow flex items-center justify-center my-4 sm:my-auto z-10 w-full px-2 sm:px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-4xl w-full items-stretch">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 flex-1 items-stretch">
-
-            {/* Left Column: Contact Details + View Counter */}
-            <div className="flex flex-col justify-between h-full space-y-6">
-
-              {/* Contact Details Box */}
-              <div className="border border-gold/20 rounded-lg p-5 space-y-6 flex-1 flex flex-col justify-center">
-                <div>
-                  <h3 className={`${bangers.className} text-3xl text-gold tracking-wide mb-4`}>
-                    CONTACT DETAILS
-                  </h3>
-                  <p className="text-xs text-slate-400 leading-relaxed">
-                    Have an idea, project, or opportunity you want to discuss? Reach out via email or connect with me on social platforms.
-                  </p>
-                </div>
-
-                <div className="space-y-4 text-xs font-mono">
-                  <div className="flex flex-col gap-1">
-                    <span className="text-[10px] text-slate-500 font-bold">EMAIL</span>
-                    <a href="mailto:kolipakasiddhu.work@gmail.com" className="text-gold hover:underline font-bold text-sm">
-                      kolipakasiddhu.work@gmail.com
-                    </a>
-                  </div>
-
-                  <div className="flex flex-col gap-1">
-                    <span className="text-[10px] text-slate-500 font-bold">LOCATION</span>
-                    <span className="text-white text-sm">Hyderabad, India</span>
-                  </div>
-
-                  <div className="flex items-center gap-4 pt-2">
-                    <a href="https://github.com/siddhu-kolipaka" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline font-bold text-sm">
-                      GitHub
-                    </a>
-                    <span className="text-slate-600">|</span>
-                    <a href="https://www.linkedin.com/in/siddharth-kolipaka" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline font-bold text-sm">
-                      LinkedIn
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* View Counter Card (Pop design) */}
-              <div className="border border-gold rounded-lg p-5 bg-gold/5 shadow-[0_0_15px_rgba(230,180,34,0.08)] flex flex-col gap-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
-                    <span className="text-[10px] text-gold uppercase tracking-wider font-bold">PORTFOLIO VIEWS</span>
-                  </div>
-                  <span className="text-[9px] text-emerald-400 font-bold">LIVE TELEMETRY</span>
-                </div>
-
-                <div className="grid grid-cols-2 gap-6 border-t border-gold/15 pt-3">
-                  <div>
-                    <span className="block text-[9px] text-slate-400 font-bold uppercase tracking-wider">Total Views</span>
-                    <span className="text-2xl font-bold text-cyan-400 font-mono tracking-wider block mt-0.5">
-                      {views.views.toLocaleString()}
-                    </span>
-                  </div>
-                  <div>
-                    <span className="block text-[9px] text-slate-400 font-bold uppercase tracking-wider">Unique Visitors</span>
-                    <span className="text-2xl font-bold text-amber-400 font-mono tracking-wider block mt-0.5">
-                      {views.uniqueViews.toLocaleString()}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
+          {/* Left Column: Card 1: Contact Details */}
+          <div className="border border-gold/20 rounded-xl p-4 sm:p-6 bg-gold/5 shadow-[0_0_20px_rgba(230,180,34,0.02)] flex flex-col justify-between h-full min-h-[260px] sm:min-h-[300px]">
+            <div>
+              <span className="text-[10px] text-gold/60 tracking-widest font-bold uppercase block mb-1">01 // DIRECT PORT</span>
+              <h3 className={`${bangers.className} text-3xl text-gold tracking-wide mb-3`}>
+                CONTACT DETAILS
+              </h3>
             </div>
 
-            {/* Right Column: Contact Form */}
-            <form onSubmit={handleSubmit} className="border border-gold/20 rounded-lg p-5 flex flex-col justify-between h-full space-y-6">
+            <div className="space-y-3 sm:space-y-4 text-xs font-mono py-3 sm:py-4 border-t border-b border-gold/10 my-3 sm:my-4 flex-grow flex flex-col justify-center">
+              <div className="flex flex-col gap-1">
+                <span className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">EMAIL ADDRESS</span>
+                <span className="text-white font-bold text-sm tracking-wide truncate block">
+                  kolipakasiddhu.work@gmail.com
+                </span>
+              </div>
 
-              <div className="space-y-4 flex-1 flex flex-col justify-center">
-                <div>
-                  <h3 className={`${bangers.className} text-3xl text-gold tracking-wide mb-4`}>
-                    SEND MESSAGE
+              <div className="flex flex-col gap-1 mt-2 sm:mt-3">
+                <span className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">LOCATION COORDINATES</span>
+                <span className="text-white text-sm font-bold">Hyderabad, India</span>
+              </div>
+
+              <div className="flex flex-col gap-1 mt-2 sm:mt-3">
+                <span className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">COMMUNICATION STATUS</span>
+                <p className="text-slate-400 text-[11px] leading-relaxed mb-1">
+                  Open for new opportunities, software engineering roles, and collaborations.
+                </p>
+              </div>
+
+              <a
+                href="mailto:kolipakasiddhu.work@gmail.com"
+                className="flex items-center justify-between p-2.5 sm:p-3 border border-gold/30 hover:border-gold hover:bg-gold/10 rounded-lg text-gold font-bold transition-all duration-300 text-xs tracking-wider uppercase mt-2 shadow-[0_0_12px_rgba(230,180,34,0.05)] hover:shadow-[0_0_15px_rgba(230,180,34,0.15)]"
+              >
+                <span>INBOX HANDSHAKE</span>
+                <span>→</span>
+              </a>
+            </div>
+
+            <div className="text-[9px] text-slate-500 uppercase tracking-widest flex items-center justify-between">
+              <span>SECURE CONNECT NODE v1.2</span>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+            </div>
+          </div>
+
+          {/* Right Column: Vertical stack of Card 2 & Card 3 */}
+          <div className="flex flex-col gap-4 sm:gap-6 justify-between h-full">
+            {/* Card 2: Live Telemetry */}
+            <div className="border border-gold/20 rounded-xl p-4 sm:p-5 bg-gold/5 shadow-[0_0_20px_rgba(230,180,34,0.02)] flex flex-col justify-between flex-1">
+              <div>
+                <span className="text-[10px] text-gold/60 tracking-widest font-bold uppercase block mb-1">02 // ANALYTICS</span>
+                <div className="flex items-center justify-between border-b border-gold/10 pb-2 mb-2">
+                  <h3 className={`${bangers.className} text-2xl text-gold tracking-wide`}>
+                    LIVE TELEMETRY
                   </h3>
-                  <p className="text-xs text-slate-400 leading-relaxed">
-                    Send a message directly to my inbox using the secure form below.
-                  </p>
+                  <span className="text-[8px] text-emerald-400 font-bold border border-emerald-400/20 px-1.5 py-0.5 rounded bg-emerald-400/5 uppercase">
+                    ONLINE
+                  </span>
                 </div>
+                <p className="text-[10px] text-slate-400 leading-relaxed">
+                  Tracking active portfolio traffic and unique visitor signals across network connections.
+                </p>
+              </div>
 
-                <div className="space-y-4">
-                  {/* Name & Email in one row */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="flex flex-col gap-1.5">
-                      <label htmlFor="contact-name" className="text-[9px] text-gold uppercase tracking-wider font-bold">Your Name</label>
-                      <input
-                        type="text"
-                        name="name"
-                        id="contact-name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="John Doe"
-                        className="w-full bg-transparent border border-zinc-800 focus:border-gold rounded-lg px-3 py-2.5 text-xs text-white placeholder-zinc-600 focus:outline-none transition-colors duration-300"
-                      />
-                    </div>
-                    <div className="flex flex-col gap-1.5">
-                      <label htmlFor="contact-email" className="text-[9px] text-gold uppercase tracking-wider font-bold">Your Email</label>
-                      <input
-                        type="email"
-                        name="email"
-                        id="contact-email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="john@example.com"
-                        className="w-full bg-transparent border border-zinc-800 focus:border-cyan-400 rounded-lg px-3 py-2.5 text-xs text-white placeholder-zinc-600 focus:outline-none transition-colors duration-300"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Subject */}
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="contact-subject" className="text-[9px] text-gold uppercase tracking-wider font-bold">Subject</label>
-                    <input
-                      type="text"
-                      name="subject"
-                      id="contact-subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      placeholder="Project Opportunity"
-                      className="w-full bg-transparent border border-zinc-800 focus:border-amber-400 rounded-lg px-3 py-2.5 text-xs text-white placeholder-zinc-600 focus:outline-none transition-colors duration-300"
-                    />
-                  </div>
-
-                  {/* Message */}
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="contact-message" className="text-[9px] text-gold uppercase tracking-wider font-bold">Your Message</label>
-                    <textarea
-                      name="message"
-                      id="contact-message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      rows={5}
-                      placeholder="Write your message here..."
-                      className="w-full bg-transparent border border-zinc-800 focus:border-gold rounded-lg px-3 py-2.5 text-xs text-white placeholder-zinc-600 focus:outline-none transition-colors duration-300 resize-none"
-                    />
-                  </div>
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 text-xs font-mono py-2">
+                <div className="flex flex-col justify-center border border-zinc-800/80 p-2.5 sm:p-3 rounded bg-black/40">
+                  <span className="text-[9px] text-slate-400 font-bold uppercase mb-1">Total Views</span>
+                  <span className="text-base sm:text-lg font-bold text-cyan-400 font-mono tracking-wider">
+                    {views.views.toLocaleString()}
+                  </span>
+                </div>
+                <div className="flex flex-col justify-center border border-zinc-800/80 p-2.5 sm:p-3 rounded bg-black/40">
+                  <span className="text-[9px] text-slate-400 font-bold uppercase mb-1">Unique Views</span>
+                  <span className="text-base sm:text-lg font-bold text-amber-400 font-mono tracking-wider">
+                    {views.uniqueViews.toLocaleString()}
+                  </span>
                 </div>
               </div>
 
-              <div className="space-y-4">
-                {statusMsg.text && (
-                  <div className="text-[10px] text-gold border border-gold/30 rounded px-3 py-2 bg-transparent font-mono">
-                    {statusMsg.text}
-                  </div>
-                )}
+              <div className="text-[9px] text-slate-500 uppercase tracking-widest mt-2">
+                REAL-TIME SENSOR HUB
+              </div>
+            </div>
 
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full py-3.5 bg-transparent border border-gold text-gold rounded-lg uppercase text-xs font-bold tracking-[0.2em] transition-all duration-300 hover:bg-gold hover:text-black cursor-pointer shadow-[0_0_10px_rgba(230,180,34,0.1)] hover:shadow-[0_0_20px_rgba(230,180,34,0.3)] disabled:opacity-50"
+            {/* Card 3: Social Matrix */}
+            <div className="border border-gold/20 rounded-xl p-4 sm:p-5 bg-zinc-950/20 flex flex-col justify-between flex-1">
+              <div>
+                <span className="text-[10px] text-gold/60 tracking-widest font-bold uppercase block mb-1">03 // NETWORK MATRIX</span>
+                <h3 className={`${bangers.className} text-2xl text-gold tracking-wide mb-1`}>
+                  SOCIAL MATRIX
+                </h3>
+                <p className="text-[10px] text-slate-400 leading-relaxed mb-2">
+                  Access primary source files, active repositories, and professional network logs.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 py-2 sm:py-3 border-t border-b border-gold/10 my-2 sm:my-3">
+                <a
+                  href="https://github.com/siddhu-kolipaka"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-2.5 sm:p-3 border border-cyan-500/20 hover:border-cyan-400 hover:bg-cyan-500/5 rounded text-cyan-400 font-bold transition-all duration-300 text-[10px] sm:text-xs tracking-wider"
                 >
-                  {loading ? "SENDING..." : "SEND MESSAGE"}
-                </button>
-              </div>
-            </form>
+                  <span>GITHUB</span>
+                  <span>→</span>
+                </a>
 
+                <a
+                  href="https://www.linkedin.com/in/siddharth-kolipaka"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-2.5 sm:p-3 border border-emerald-500/20 hover:border-emerald-400 hover:bg-emerald-500/5 rounded text-emerald-400 font-bold transition-all duration-300 text-[10px] sm:text-xs tracking-wider"
+                >
+                  <span>LINKEDIN</span>
+                  <span>→</span>
+                </a>
+              </div>
+
+              <div className="text-[9px] text-slate-500 uppercase tracking-widest">
+                EXTERNAL RESOURCE LINKER
+              </div>
+            </div>
           </div>
 
         </div>

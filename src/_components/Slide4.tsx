@@ -31,7 +31,7 @@ function TechBadge({ name, glowColor }: TechBadgeProps) {
   return (
     <motion.span
       whileHover={{ scale: 1.05 }}
-      className={`px-2 py-0.5 text-[11px] font-mono rounded border transition-all duration-300 cursor-default select-none ${glowClasses[glowColor]}`}
+      className={`px-1.5 py-0.5 text-[9px] md:text-[10px] lg:text-[11px] font-mono rounded border transition-[border-color,background-color,box-shadow] duration-300 cursor-default select-none ${glowClasses[glowColor]}`}
     >
       {name}
     </motion.span>
@@ -209,7 +209,7 @@ export default function Slide4() {
         className="w-full flex flex-col md:flex-row items-start md:items-center justify-between border-b border-purple-500/30 pb-4 z-10 gap-4"
       >
         <div>
-          <h2 className="text-xs text-purple-400 tracking-[0.25em] font-bold">
+          <h2 className="text-[10px] md:text-xs text-purple-400 tracking-[0.25em] font-bold uppercase">
             SECURE ACCESS CORE // SYSTEM NODE 04
           </h2>
           <h1 className="text-xl md:text-2xl font-bold text-white mt-1 uppercase flex items-center gap-2">
@@ -234,7 +234,7 @@ export default function Slide4() {
         {/* SECTION 1: Normal Long Timeline with Date on Left, Details on Right */}
         <div className="w-full md:w-[80%] mx-auto border border-purple-500/20 bg-slate-950/40 backdrop-blur-md rounded-xl p-4 md:p-6 relative overflow-hidden flex flex-col">
           <h3 className={`${bangers.className} text-3xl text-purple-400 tracking-wider mb-8 border-b border-purple-500/20 pb-2`}>
-            [ MISSION TIMELINE ]
+            [  TIMELINE ]
           </h3>
 
           {/* Normal Timeline Wrapper */}
@@ -293,9 +293,10 @@ export default function Slide4() {
                   <motion.div
                     initial={{ x: 30, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
+                    whileHover={{ x: 4 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.7, delay: idx * 0.1 }}
-                    className="flex flex-col w-full text-left space-y-2 pl-10 lg:pl-12 group-hover/node:translate-x-1 transition-all duration-300 border border-transparent hover:border-purple-500/10 hover:bg-purple-950/5 rounded-lg p-3 lg:-ml-3"
+                    className="flex flex-col w-full text-left space-y-2 pl-10 lg:pl-12 transition-[border-color,background-color] duration-300 border border-transparent hover:border-purple-500/10 hover:bg-purple-950/5 rounded-lg p-3 lg:-ml-3"
                   >
                     {/* Mobile-only header (hidden on desktop) */}
                     <div className="flex flex-wrap items-center gap-2 lg:hidden">
@@ -336,7 +337,7 @@ export default function Slide4() {
         {/* SECTION 2: Showcase Projects (Minimalist Gaming Card Style - Full Image, Title Top-Left, Tech Bottom, Blur + Desc on Hover) */}
         <div className="w-full border border-purple-500/20 bg-slate-950/40 backdrop-blur-md rounded-xl p-4 md:p-6 relative overflow-hidden flex flex-col">
           <h3 className={`${bangers.className} text-3xl text-purple-400 tracking-wider mb-6 border-b border-purple-500/20 pb-2`}>
-            [ SECURED DEPLOYMENTS ]
+            [ PROJECTS ]
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
@@ -349,9 +350,15 @@ export default function Slide4() {
                 initial={{ y: 30, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                whileHover={{ scale: 1.02, y: -2 }}
-                className={`block border bg-slate-950/60 rounded-xl transition-all duration-300 aspect-video relative overflow-hidden group transform translate-z-0 ${proj.colorClass}`}
+                whileHover={{ scale: 1.02, y: -4 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 22,
+                  mass: 0.6,
+                  delay: idx * 0.05
+                }}
+                className={`block border bg-slate-950/60 rounded-xl transition-[border-color,background-color,box-shadow] duration-300 aspect-[4/3] md:aspect-video relative overflow-hidden group transform translate-z-0 ${proj.colorClass}`}
               >
                 {/* Full Background Project Image (filled completely) */}
                 <div className="absolute inset-0 right-auto bottom-auto w-full h-full z-0">
@@ -359,36 +366,37 @@ export default function Slide4() {
                     src={proj.imagePath}
                     alt={proj.title}
                     fill
-                    className="object-cover transition-all duration-700 group-hover:scale-105 group-hover:blur-sm"
+                    className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  {/* Dark overlay gradients */}
-                  <div className="absolute inset-0 right-auto bottom-auto w-full h-full bg-gradient-to-b from-black/60 via-transparent to-black/75 transition-all duration-500 group-hover:from-black/80 group-hover:to-black/90" />
+                  {/* Performance-tuned dark overlay gradients */}
+                  <div className="absolute inset-0 right-auto bottom-auto w-full h-full bg-gradient-to-b from-black/60 via-transparent to-black/80 z-[1]" />
+                  <div className="absolute inset-[1px] bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-[2] rounded-xl" />
                 </div>
 
                 {/* Base Layer: Title (Top Left) */}
-                <div className="absolute top-4 left-4 z-10 pointer-events-none transition-opacity duration-300 group-hover:opacity-0">
-                  <h4 className="text-xs md:text-sm font-bold text-white uppercase tracking-wider bg-black/70 px-2.5 py-1.5 rounded border border-white/10 backdrop-blur-md shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+                <div className="absolute top-3 left-3 md:top-4 md:left-4 z-10 pointer-events-none transition-opacity duration-300 group-hover:opacity-0">
+                  <h4 className="text-[10px] md:text-xs lg:text-sm font-bold text-white uppercase tracking-wider bg-black/70 px-2 py-1 md:px-2.5 md:py-1.5 rounded border border-white/10 backdrop-blur-md shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
                     {proj.title}
                   </h4>
                 </div>
 
                 {/* Base Layer: Tech Stack (Bottom Centre) */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex flex-wrap justify-center gap-1.5 bg-black/70 p-2 rounded-lg border border-white/10 backdrop-blur-md max-w-[90%] w-max transition-opacity duration-300 group-hover:opacity-0 pointer-events-none">
+                <div className="absolute bottom-3 md:bottom-4 left-1/2 -translate-x-1/2 z-10 flex flex-wrap justify-center gap-1 md:gap-1.5 bg-black/70 p-1.5 md:p-2 rounded-lg border border-white/10 backdrop-blur-md max-w-[92%] w-max transition-opacity duration-300 group-hover:opacity-0 pointer-events-none">
                   {proj.tech.map((t, tIdx) => (
                     <TechBadge key={tIdx} name={t} glowColor={proj.badgeColor} />
                   ))}
                 </div>
 
                 {/* HOVER OVERLAY: Description & Link */}
-                <div className="absolute inset-0 right-auto bottom-auto w-full h-full z-20 bg-black/35 backdrop-blur-lg opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-center items-center p-4 text-center rounded-xl overflow-hidden">
+                <div className="absolute inset-[1px] z-20 bg-black/40 backdrop-blur-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col justify-center items-center p-4 text-center rounded-xl overflow-hidden">
                   <span className={`text-[9px] font-bold tracking-[0.2em] mb-1.5 uppercase ${OVERVIEW_TEXT_STYLES[proj.badgeColor]}`}>
                     SYS.PROJECT // DEPLOYED
                   </span>
                   <p className="text-[10px] md:text-xs text-slate-200 leading-relaxed font-mono max-w-[260px] line-clamp-3 md:line-clamp-none">
                     {proj.description}
                   </p>
-                  <div className={`mt-4 px-3.5 py-1.5 bg-black/30 border rounded text-[9px] uppercase font-bold tracking-widest transition-all duration-300 cursor-pointer ${LAUNCH_BUTTON_STYLES[proj.badgeColor]}`}>
+                  <div className={`mt-4 px-3.5 py-1.5 bg-black/30 border rounded text-[9px] uppercase font-bold tracking-widest transition-[border-color,background-color] duration-300 cursor-pointer ${LAUNCH_BUTTON_STYLES[proj.badgeColor]}`}>
                     LAUNCH REPOSITORY
                   </div>
                 </div>

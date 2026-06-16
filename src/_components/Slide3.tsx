@@ -29,7 +29,7 @@ function TechBadge({ name, glowColor }: TechBadgeProps) {
   return (
     <motion.span
       whileHover={{ scale: 1.05 }}
-      className={`px-2 py-1 text-[10px] font-mono rounded border transition-all duration-300 cursor-default select-none ${glowClasses[glowColor]}`}
+      className={`px-2 py-1 text-[10px] font-mono rounded border transition-[border-color,background-color,box-shadow] duration-300 cursor-default select-none ${glowClasses[glowColor]}`}
     >
       {name}
     </motion.span>
@@ -321,7 +321,7 @@ export default function Slide3() {
         className="w-full flex flex-col md:flex-row items-start md:items-center justify-between border-b border-red-500/30 pb-4 z-10 gap-4"
       >
         <div>
-          <h2 className="text-sm text-red-400 tracking-[0.25em] font-bold">
+          <h2 className="text-[10px] md:text-xs text-red-400 tracking-[0.25em] font-bold uppercase">
             SECURE ACCESS CORE // SYSTEM NODE 03
           </h2>
           <h1 className="text-2xl md:text-3xl font-bold text-white mt-1 uppercase flex items-center gap-2">
@@ -364,7 +364,7 @@ export default function Slide3() {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02 }}
-                  className={`block border bg-slate-950/60 rounded-lg p-4 transition-all duration-300 ${platform.colorClass}`}
+                  className={`block border bg-slate-950/60 rounded-lg p-4 transition-[border-color,background-color,box-shadow] duration-300 ${platform.colorClass}`}
                 >
                   <div className="flex justify-between items-center mb-2">
                     <div>
@@ -457,7 +457,7 @@ export default function Slide3() {
                 <motion.div
                   key={idx}
                   whileHover={{ scale: 1.02 }}
-                  className={`border bg-slate-950/60 rounded-lg p-4 flex flex-col justify-between transition-all duration-300 ${achColors[ach.color]}`}
+                  className={`border bg-slate-950/60 rounded-lg p-4 flex flex-col justify-between transition-[border-color,background-color,box-shadow] duration-300 ${achColors[ach.color]}`}
                 >
                   <div className="flex justify-between items-start mb-2 gap-2">
                     <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">

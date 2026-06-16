@@ -22,7 +22,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-full overflow-x-hidden relative">
+    <div className="w-full overflow-x-hidden relative flex flex-col gap-12 md:gap-4 bg-black">
       <Slide1 setMenuOpen={setMenuOpen} />
       <Slide2 />
       <Slide3 />
@@ -36,9 +36,10 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}
+            whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
             onClick={() => setMenuOpen(true)}
-            className="fixed top-6 right-6 md:top-8 md:right-12 z-[80] size-14 md:size-16 rounded-full bg-black/45 backdrop-blur-md border border-white/10 shadow-[0_4px_25px_rgba(0,0,0,0.6)] flex flex-col items-center justify-center gap-1.5 cursor-pointer hover:scale-110 hover:bg-black/60 hover:border-white/20 transition-all duration-300 pointer-events-auto"
+            className="fixed top-6 right-6 md:top-8 md:right-12 z-[80] size-14 md:size-16 rounded-full bg-black/45 backdrop-blur-md border border-white/10 shadow-[0_4px_25px_rgba(0,0,0,0.6)] flex flex-col items-center justify-center gap-1.5 cursor-pointer hover:bg-black/60 hover:border-white/20 transition-[background-color,border-color] duration-300 pointer-events-auto"
             title="Open Menu"
           >
             <span className="w-6 h-0.5 bg-white rounded-full"></span>

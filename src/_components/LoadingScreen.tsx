@@ -66,7 +66,7 @@ export default function LoadingScreen() {
       <div className="absolute w-[500px] h-[500px] bg-[#e6b422]/5 rounded-full filter blur-[120px] pointer-events-none" />
 
       {/* SVG Container */}
-      <div className="w-full max-w-[320px] sm:max-w-[480px] md:max-w-[650px] lg:max-w-[800px] relative z-10">
+      <div className="w-full max-w-[260px] sm:max-w-[360px] md:max-w-[440px] lg:max-w-[500px] relative z-10">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 913 393"
