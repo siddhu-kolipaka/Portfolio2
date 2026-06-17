@@ -349,7 +349,7 @@ export default function Slide4() {
                       mass: 0.6,
                       delay: idx * 0.05
                     }}
-                    className="flex flex-col w-full text-left space-y-2 ml-8 lg:ml-8 transition-[border-color,background-color] duration-300 border border-transparent hover:border-purple-500/10 hover:bg-purple-950/5 rounded-lg p-4"
+                    className="flex flex-col w-[calc(100%-2rem)] lg:w-auto lg:flex-1 text-left space-y-2 ml-8 lg:ml-8 transition-[border-color,background-color] duration-300 border border-transparent hover:border-purple-500/10 hover:bg-purple-950/5 rounded-lg p-4"
                   >
                     {/* Mobile-only header (hidden on desktop) */}
                     <div className="flex flex-wrap items-center gap-2 lg:hidden">
