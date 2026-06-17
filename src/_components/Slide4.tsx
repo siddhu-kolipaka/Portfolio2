@@ -30,7 +30,8 @@ function TechBadge({ name, glowColor }: TechBadgeProps) {
 
   return (
     <motion.span
-      whileHover={{ scale: 1.05 }}
+      whileHover={{ scale: 1.08 }}
+      transition={{ type: "spring", stiffness: 400, damping: 15 }}
       className={`px-1.5 py-0.5 text-[9px] md:text-[10px] lg:text-[11px] font-mono rounded border transition-[border-color,background-color,box-shadow] duration-300 cursor-default select-none ${glowClasses[glowColor]}`}
     >
       {name}
@@ -71,60 +72,100 @@ const EXPERIENCES = [
 
 // JSON object array for Projects
 const PROJECTS = [
+
+
   {
-    title: "Multi-Modal Fake News Detector",
-    description: "AI-driven news authenticity verification engine using deep learning to match visual and textual heuristics.",
+    title: "Multi-Modal Fake News Detection Model (FACTS-OOCMDM)",
+    description: "Created evidence-aware multi-modal networks to detect fake news combining visual and text features using CLIP and Transformers. Built FAISS-based similarity search pipelines and contextualized embeddings.",
     tech: ["PyTorch", "CLIP", "FAISS", "Transformers", "Python"],
     colorClass: "border-purple-500/20 hover:border-purple-500/50 shadow-[0_0_15px_rgba(168,85,247,0.05)] hover:shadow-[0_0_25px_rgba(168,85,247,0.25)]",
     badgeColor: "purple" as const,
-    link: "https://github.com/siddhu-kolipaka",
+    link: "https://github.com/siddhu-kolipaka/FACTS-OOCMDM",
     imagePath: "/project_fake_news.png",
   },
   {
-    title: "AccuKnox Security Dashboard",
-    description: "Cloud-native security telemetry console visualizing system alerts, agent status indices, and log streams.",
-    tech: ["Next.js", "Redux Toolkit", "Recharts", "Tailwind CSS"],
-    colorClass: "border-cyan-500/20 hover:border-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,0.05)] hover:shadow-[0_0_25px_rgba(6,182,212,0.25)]",
-    badgeColor: "cyan" as const,
-    link: "https://github.com/siddhu-kolipaka/AccuKnox_Dashboard",
-    imagePath: "/project_accuknox.png",
+    title: "Evidence based Out of context benchmark (EVIOOC)",
+    description: "An experimental ML benchmark for out-of-context fake news detection. Evaluated 5 models, 5 text & 3 image vectorizers, and 4 fusion strategies across 240 pipeline configurations.",
+    tech: ["PyTorch", "Python", "ML Models", "DL Models", "Multimodal Vectorisation Techniques", "Fusion Strategies"],
+    colorClass: "border-gold/20 hover:border-gold/50 shadow-[0_0_15px_rgba(230,180,34,0.05)] hover:shadow-[0_0_25px_rgba(230,180,34,0.25)]",
+    badgeColor: "gold" as const,
+    link: "https://github.com/siddhu-kolipaka/EVIOOC",
+    imagePath: "/out_of_context_benchmark.png",
   },
+
   {
-    title: "Valorant Tournament Portal",
-    description: "High-traffic registration portal for Revelation 2k24 tournament featuring custom gaming interfaces and bracket metrics.",
-    tech: ["React", "Express", "Node.js", "MongoDB", "Framer Motion"],
+    title: "SidTrack: Wealth Tracking Website",
+    description: "A multi-feature wealth tracking platform with a zero-infrastructure-cost architecture. Features 5 financial analytics modules, stateless JWT authentication, and optimized MongoDB queries reducing database I/O by 40%.",
+    tech: ["JavaScript", "Node.js", "React", "Express", "MongoDB", "JWT", "Tailwind CSS", "Framer Motion", "Redux Toolkit"],
     colorClass: "border-pink-500/20 hover:border-pink-500/50 shadow-[0_0_15px_rgba(236,72,153,0.05)] hover:shadow-[0_0_25px_rgba(236,72,153,0.25)]",
     badgeColor: "pink" as const,
-    link: "https://github.com/siddhu-kolipaka/rev_valo",
-    imagePath: "/project_valorant.png",
+    link: "https://github.com/siddhu-kolipaka/SidTrack",
+    liveLink: "https://sidtrack.netlify.app/",
+    imagePath: "/sidtrack.png",
   },
   {
-    title: "Universal Semantic Search",
-    description: "Neural index search matching query embeddings in vector space to retrieve contextual documentation instantly.",
-    tech: ["FastAPI", "Qdrant", "Sentence-Transformers", "React"],
-    colorClass: "border-emerald-500/20 hover:border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.05)] hover:shadow-[0_0_25px_rgba(16,185,129,0.25)]",
-    badgeColor: "emerald" as const,
-    link: "https://github.com/siddhu-kolipaka",
-    imagePath: "/project_search.png",
+    title: "Current Portfolio Website (2026)",
+    description: "A sleek, modern, and dynamic portfolio website built with cutting-edge technologies to showcase my skills and projects. This website features a unique, futuristic design with smooth animations and interactive elements.",
+    tech: ["Next.js", "Typescript", "Tailwind CSS", "Framer Motion"],
+    colorClass: "border-red-500/20 hover:border-red-500/50 shadow-[0_0_15px_rgba(239,68,68,0.05)] hover:shadow-[0_0_25px_rgba(239,68,68,0.25)]",
+    badgeColor: "red" as const,
+    link: "https://github.com/siddhu-kolipaka/Portfolio2",
+    liveLink: "https://siddharthkolipaka.netlify.app/",
+    imagePath: "/portfolio2.png",
   },
   {
-    title: "Decentralized Escrow Protocol",
-    description: "Web3 escrow smart contract system enforcing secure multi-sig transaction milestones with automated refund hooks.",
-    tech: ["Solidity", "Hardhat", "Ethers.js", "React", "TypeScript"],
-    colorClass: "border-purple-500/20 hover:border-purple-500/50 shadow-[0_0_15px_rgba(168,85,247,0.05)] hover:shadow-[0_0_25px_rgba(168,85,247,0.25)]",
-    badgeColor: "purple" as const,
-    link: "https://github.com/siddhu-kolipaka",
-    imagePath: "/project_escrow.png",
+    title: "First Portfolio Website (2024)",
+    description: "My first attempt at building a professional portfolio website. It was a great learning experience and helped me understand the basics of web development.",
+    tech: ["JavaScript", "React", "Framer Motion"],
+    colorClass: "border-cyan-500/20 hover:border-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,0.05)] hover:shadow-[0_0_25px_rgba(6,182,212,0.25)]",
+    badgeColor: "cyan" as const,
+    link: "https://github.com/siddhu-kolipaka/portfolio",
+    liveLink: "https://siddhukolipaka.netlify.app/",
+    imagePath: "/portfolio1.png",
   },
   {
-    title: "Real-time Telemetry Engine",
-    description: "High-throughput system telemetry parser handling concurrent data streams from remote IoT sensors via gRPC.",
-    tech: ["Rust", "gRPC", "Tokio", "InfluxDB", "Grafana"],
+    title: "Sankranti Website (2026)",
+    description: "First ever sankranti website in the history of IIEST,Shibpur.",
+    tech: ["Next.js", "Typescript", "Tailwind CSS", "Framer Motion", "Shandcn UI", "Ant Design", "Material UI"],
     colorClass: "border-orange-500/20 hover:border-orange-500/50 shadow-[0_0_15px_rgba(249,115,22,0.05)] hover:shadow-[0_0_25px_rgba(249,115,22,0.25)]",
     badgeColor: "orange" as const,
-    link: "https://github.com/siddhu-kolipaka",
-    imagePath: "/project_telemetry.png",
+    link: "https://github.com/siddhu-kolipaka/Sankranti-IIESTS",
+    liveLink: "https://sankranti-iiests.vercel.app/",
+    imagePath: "/sankranti-2k26.png",
   },
+
+  {
+    title: "Certificate Generator (IIEST, Shibpur)",
+    description: "A full-stack certificate automation web application reducing manual effort by 100% for faculty. Features a REST API to auto-fetch student records and a single-click PDF export that cuts certification turnaround time by 90%.",
+    tech: ["Node.js", "Express", "MongoDB", "HTML", "CSS", "JavaScript", "Handlebars"],
+    colorClass: "border-cyan-500/20 hover:border-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,0.05)] hover:shadow-[0_0_25px_rgba(6,182,212,0.25)]",
+    badgeColor: "cyan" as const,
+    link: "https://github.com/siddhu-kolipaka/Certificate-Generator",
+    liveLink: "https://certificate-generator-bvtg.onrender.com/",
+    imagePath: "/cert-gen.png",
+  },
+
+  {
+    title: "Pre-Christmas Website (2024)",
+    description: "First ever prechristmas website in the history of IIEST,Shibpur.",
+    tech: ["React", "JavaScript", "Tailwind CSS", "Framer Motion"],
+    colorClass: "border-emerald-500/20 hover:border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.05)] hover:shadow-[0_0_25px_rgba(16,185,129,0.25)]",
+    badgeColor: "emerald" as const,
+    link: "https://github.com/siddhu-kolipaka/pre-christmas",
+    liveLink: "https://pre-christmas-2k24.netlify.app/",
+    imagePath: "/pre-christmas.png",
+  },
+
+  {
+    title: "Memory Allocation Tracker",
+    description: "A C-based memory leak detection library hooking into malloc and free to log 100% of allocations. Features a custom reporting utility to print unfreed blocks with origin lines and sizes, cutting debugging time by 30%.",
+    tech: ["C", "GCC", "GDB", "System Programming", "Memory Management"],
+    colorClass: "border-red-500/20 hover:border-red-500/50 shadow-[0_0_15px_rgba(239,68,68,0.05)] hover:shadow-[0_0_25px_rgba(239,68,68,0.25)]",
+    badgeColor: "red" as const,
+    link: "https://github.com/siddhu-kolipaka/memTracLib",
+    imagePath: "/memory_tracker.png",
+  },
+
 ];
 
 const OVERVIEW_TEXT_STYLES = {
@@ -205,7 +246,7 @@ export default function Slide4() {
         initial={{ y: -50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
         className="w-full flex flex-col md:flex-row items-start md:items-center justify-between border-b border-purple-500/30 pb-4 z-10 gap-4"
       >
         <div>
@@ -275,7 +316,13 @@ export default function Slide4() {
                     initial={{ x: -20, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.6, delay: idx * 0.1 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 24,
+                      mass: 0.6,
+                      delay: idx * 0.05
+                    }}
                     className="hidden lg:flex w-[280px] pr-12 flex-col items-end text-right shrink-0 space-y-1"
                   >
                     <span className="text-[9px] text-purple-400 font-bold block uppercase tracking-widest">
@@ -295,15 +342,21 @@ export default function Slide4() {
                     whileInView={{ x: 0, opacity: 1 }}
                     whileHover={{ x: 4 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.7, delay: idx * 0.1 }}
-                    className="flex flex-col w-full text-left space-y-2 pl-10 lg:pl-12 transition-[border-color,background-color] duration-300 border border-transparent hover:border-purple-500/10 hover:bg-purple-950/5 rounded-lg p-3 lg:-ml-3"
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 24,
+                      mass: 0.6,
+                      delay: idx * 0.05
+                    }}
+                    className="flex flex-col w-full text-left space-y-2 ml-8 lg:ml-8 transition-[border-color,background-color] duration-300 border border-transparent hover:border-purple-500/10 hover:bg-purple-950/5 rounded-lg p-4"
                   >
                     {/* Mobile-only header (hidden on desktop) */}
                     <div className="flex flex-wrap items-center gap-2 lg:hidden">
                       <span className="text-[9px] text-purple-400 font-bold uppercase tracking-widest">
                         {exp.indexStr}
                       </span>
-                      <span className="text-xs text-slate-500 font-bold">//</span>
+                      <span className="text-xs text-slate-500 font-bold">{"//"}</span>
                       <span className="text-xs font-bold text-white uppercase">
                         {exp.duration}
                       </span>
@@ -342,11 +395,8 @@ export default function Slide4() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
             {PROJECTS.map((proj, idx) => (
-              <motion.a
+              <motion.div
                 key={idx}
-                href={proj.link}
-                target="_blank"
-                rel="noopener noreferrer"
                 initial={{ y: 30, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
@@ -396,11 +446,32 @@ export default function Slide4() {
                   <p className="text-[10px] md:text-xs text-slate-200 leading-relaxed font-mono max-w-[260px] line-clamp-3 md:line-clamp-none">
                     {proj.description}
                   </p>
-                  <div className={`mt-4 px-3.5 py-1.5 bg-black/30 border rounded text-[9px] uppercase font-bold tracking-widest transition-[border-color,background-color] duration-300 cursor-pointer ${LAUNCH_BUTTON_STYLES[proj.badgeColor]}`}>
-                    LAUNCH REPOSITORY
+                  <div className="flex gap-3 mt-4 w-full justify-center z-30">
+                    <motion.a
+                      href={proj.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                      className={`px-3 py-1.5 bg-black/30 border rounded text-[9px] uppercase font-bold tracking-widest transition-[border-color,background-color,box-shadow] duration-300 cursor-pointer ${LAUNCH_BUTTON_STYLES[proj.badgeColor]}`}
+                    >
+                      GITHUB
+                    </motion.a>
+                    {proj.liveLink && (
+                      <motion.a
+                        href={proj.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                        className={`px-3 py-1.5 bg-black/30 border rounded text-[9px] uppercase font-bold tracking-widest transition-[border-color,background-color,box-shadow] duration-300 cursor-pointer ${LAUNCH_BUTTON_STYLES[proj.badgeColor]}`}
+                      >
+                        LIVE DEPLOY
+                      </motion.a>
+                    )}
                   </div>
                 </div>
-              </motion.a>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -412,13 +483,13 @@ export default function Slide4() {
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
         className="w-full flex flex-col sm:flex-row items-center justify-between border-t border-purple-500/30 pt-4 text-[10px] text-purple-500/80 font-mono z-10 gap-2 mt-4"
       >
-        <span className="tracking-widest">
+        <span className="tracking-widest text-center">
           CORE INTELNODE v4.81.0 // SECURITY CORE APPROVED
         </span>
-        <span className="tracking-[0.2em]">
+        <span className="tracking-[0.2em] text-center">
           COORDINATES: SLIDE_04_ACTIVE // COMPILING_SUCCESS
         </span>
       </motion.div>

@@ -28,7 +28,8 @@ function TechBadge({ name, glowColor }: TechBadgeProps) {
 
   return (
     <motion.span
-      whileHover={{ scale: 1.05 }}
+      whileHover={{ scale: 1.08 }}
+      transition={{ type: "spring", stiffness: 400, damping: 15 }}
       className={`px-2 py-1 text-[10px] font-mono rounded border transition-[border-color,background-color,box-shadow] duration-300 cursor-default select-none ${glowClasses[glowColor]}`}
     >
       {name}
@@ -78,7 +79,7 @@ export default function Slide3() {
           const contestData = await contestRes.json();
 
           const maxContestRating = Array.isArray(contestData.contestParticipation) && contestData.contestParticipation.length > 0
-            ? Math.round(Math.max(...contestData.contestParticipation.filter((p: any) => p.attended).map((p: any) => p.rating)))
+            ? Math.round(Math.max(...contestData.contestParticipation.filter((p: { attended: boolean; rating: number }) => p.attended).map((p: { rating: number }) => p.rating)))
             : 1881;
 
           const currentBadge = contestData.contestBadges?.name || "Knight";
@@ -120,8 +121,8 @@ export default function Slide3() {
 
             let solvedCount = 131;
             if (statusData.status === "OK" && Array.isArray(statusData.result)) {
-              const okSubmissions = statusData.result.filter((s: any) => s.verdict === "OK");
-              const uniqueProblems = new Set(okSubmissions.map((s: any) => `${s.problem.contestId}_${s.problem.name}`));
+              const okSubmissions = statusData.result.filter((s: { verdict: string }) => s.verdict === "OK");
+              const uniqueProblems = new Set(okSubmissions.map((s: { problem: { contestId: number; name: string } }) => `${s.problem.contestId}_${s.problem.name}`));
               solvedCount = uniqueProblems.size;
             }
 
@@ -317,7 +318,7 @@ export default function Slide3() {
         initial={{ y: -50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
         className="w-full flex flex-col md:flex-row items-start md:items-center justify-between border-b border-red-500/30 pb-4 z-10 gap-4"
       >
         <div>
@@ -348,7 +349,7 @@ export default function Slide3() {
           initial={{ y: -50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ type: "spring", stiffness: 220, damping: 20 }}
           className="lg:col-span-2 border border-red-500/20 bg-slate-950/40 backdrop-blur-md rounded-xl p-5 relative overflow-hidden shadow-[0_0_15px_rgba(239,68,68,0.08)] flex flex-col justify-between"
         >
           <div>
@@ -364,6 +365,7 @@ export default function Slide3() {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
                   className={`block border bg-slate-950/60 rounded-lg p-4 transition-[border-color,background-color,box-shadow] duration-300 ${platform.colorClass}`}
                 >
                   <div className="flex justify-between items-center mb-2">
@@ -382,7 +384,7 @@ export default function Slide3() {
                     {/* Current Stats */}
                     <div className="space-y-2">
                       <span className="block text-[10px] text-slate-500 uppercase tracking-widest font-bold border-b border-slate-900 pb-1">
-                        // CURRENT
+                        {"// CURRENT"}
                       </span>
                       <div>
                         <span className="block text-[9px] text-slate-400 uppercase">Rating</span>
@@ -397,7 +399,7 @@ export default function Slide3() {
                     {/* Max Stats */}
                     <div className="space-y-2 border-l border-slate-800/80 pl-4">
                       <span className="block text-[10px] text-slate-500 uppercase tracking-widest font-bold border-b border-slate-900 pb-1">
-                        // MAX / PEAK
+                        {"// MAX / PEAK"}
                       </span>
                       <div>
                         <span className="block text-[9px] text-slate-400 uppercase">Rating</span>
@@ -444,11 +446,11 @@ export default function Slide3() {
           initial={{ y: 60, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.1 }}
+          transition={{ type: "spring", stiffness: 220, damping: 20, delay: 0.05 }}
           className="lg:col-span-2 border border-red-500/20  bg-slate-950/40 backdrop-blur-md rounded-xl p-5 relative overflow-hidden  group flex flex-col"
         >
           <div>
-            <h3 className={`${bangers.className} text-4xl text-red-400 tracking-wider mb-4 border-b border-red-500/20 pb-2`}>
+            <h3 className={`${bangers.className} text-3xl md:text-4xl text-red-400 tracking-wider mb-4 border-b border-red-500/20 pb-2`}>
               [ TACTICAL ACHIEVEMENTS ]
             </h3>
 
@@ -457,6 +459,7 @@ export default function Slide3() {
                 <motion.div
                   key={idx}
                   whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 20 }}
                   className={`border bg-slate-950/60 rounded-lg p-4 flex flex-col justify-between transition-[border-color,background-color,box-shadow] duration-300 ${achColors[ach.color]}`}
                 >
                   <div className="flex justify-between items-start mb-2 gap-2">
@@ -491,13 +494,13 @@ export default function Slide3() {
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
         className="w-full flex flex-col sm:flex-row items-center justify-between border-t border-red-500/30 pt-4 text-[10px] text-red-500/80 font-mono z-10 gap-2 mt-4"
       >
-        <span className="tracking-widest">
+        <span className="tracking-widest text-center">
           CORE INTELNODE v4.81.0 // SECURITY CORE APPROVED
         </span>
-        <span className="tracking-[0.2em]">
+        <span className="tracking-[0.2em] text-center">
           COORDINATES: SLIDE_03_ACTIVE // COMPILING_SUCCESS
         </span>
       </motion.div>

@@ -28,7 +28,8 @@ function TechBadge({ name, glowColor }: TechBadgeProps) {
 
   return (
     <motion.span
-      whileHover={{ scale: 1.05 }}
+      whileHover={{ scale: 1.08 }}
+      transition={{ type: "spring", stiffness: 400, damping: 15 }}
       className={`px-2 py-1 text-[10px] lg:text-xs font-mono rounded border transition-[border-color,background-color,box-shadow] duration-300 cursor-default select-none ${glowClasses[glowColor]}`}
     >
       {name}
@@ -150,7 +151,7 @@ export default function Slide2() {
         initial={{ y: -50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
         className="w-full flex flex-col md:flex-row items-start md:items-center justify-between border-b border-cyan-500/30 pb-3 lg:pb-4 z-10 gap-3 md:gap-4"
       >
         <div>
@@ -181,7 +182,7 @@ export default function Slide2() {
           initial={{ x: -60, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ type: "spring", stiffness: 220, damping: 20 }}
           className="lg:col-span-1 lg:row-span-2 flex flex-col w-full h-full"
         >
           <div className="border border-cyan-500/20 hover:border-cyan-500/40 bg-slate-950/40 backdrop-blur-md rounded-xl p-4 lg:p-5 relative overflow-hidden shadow-[0_0_15px_rgba(6,182,212,0.08)] hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] transition-all duration-500 group w-full flex flex-col justify-between h-full">
@@ -220,7 +221,7 @@ export default function Slide2() {
           initial={{ y: -40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ type: "spring", stiffness: 220, damping: 20 }}
           className="lg:col-span-1 lg:row-span-1 flex flex-col w-full h-full"
         >
           <div className="border border-cyan-500/20 hover:border-cyan-500/40 bg-slate-950/40 backdrop-blur-md rounded-xl p-4 lg:p-5 relative overflow-hidden shadow-[0_0_15px_rgba(6,182,212,0.08)] hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] transition-all duration-500 group w-full flex flex-col justify-between h-full">
@@ -243,7 +244,7 @@ export default function Slide2() {
           initial={{ x: 60, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.1 }}
+          transition={{ type: "spring", stiffness: 220, damping: 20, delay: 0.05 }}
           className="lg:col-span-1 lg:row-span-2 flex flex-col w-full h-full"
         >
           <div className="border border-cyan-500/20 hover:border-cyan-500/40 bg-slate-950/40 backdrop-blur-md rounded-xl p-4 lg:p-5 relative overflow-hidden shadow-[0_0_15px_rgba(6,182,212,0.08)] hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] transition-all duration-500 group flex flex-col w-full h-full justify-between">
@@ -275,7 +276,7 @@ export default function Slide2() {
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ type: "spring", stiffness: 220, damping: 20 }}
           className="lg:col-span-1 lg:row-span-1 flex flex-col w-full h-full"
         >
           <div className="border border-cyan-500/20 hover:border-cyan-500/40 bg-slate-950/40 backdrop-blur-md rounded-xl p-4 lg:p-5 relative overflow-hidden shadow-[0_0_15px_rgba(6,182,212,0.08)] hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] transition-all duration-500 group flex flex-col w-full h-full justify-between">
@@ -307,7 +308,7 @@ export default function Slide2() {
                       initial={{ width: 0 }}
                       whileInView={{ width: "94.4%" }}
                       viewport={{ once: true }}
-                      transition={{ duration: 1, delay: 0.15 }}
+                      transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
                       className="h-full bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,0.5)]"
                     ></motion.div>
                   </div>
@@ -337,7 +338,7 @@ export default function Slide2() {
                       initial={{ width: 0 }}
                       whileInView={{ width: "98.9%" }}
                       viewport={{ once: true }}
-                      transition={{ duration: 1, delay: 0.25 }}
+                      transition={{ duration: 0.7, ease: "easeOut", delay: 0.18 }}
                       className="h-full bg-yellow-500 shadow-[0_0_8px_rgba(234,179,8,0.5)]"
                     ></motion.div>
                   </div>
@@ -367,7 +368,7 @@ export default function Slide2() {
                       initial={{ width: 0 }}
                       whileInView={{ width: "93.4%" }}
                       viewport={{ once: true }}
-                      transition={{ duration: 1, delay: 0.35 }}
+                      transition={{ duration: 0.7, ease: "easeOut", delay: 0.26 }}
                       className="h-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]"
                     ></motion.div>
                   </div>
@@ -382,7 +383,7 @@ export default function Slide2() {
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ type: "spring", stiffness: 220, damping: 20 }}
           className="lg:col-span-3 w-full flex flex-col"
         >
           <div className="border border-cyan-500/20 hover:border-cyan-500/40 bg-slate-950/40 backdrop-blur-md rounded-xl p-4 lg:p-5 relative overflow-hidden shadow-[0_0_15px_rgba(6,182,212,0.08)] hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] transition-all duration-500 group flex flex-col w-full h-full">
@@ -404,7 +405,7 @@ export default function Slide2() {
                       initial={{ width: 0 }}
                       whileInView={{ width: `${stat.value}%` }}
                       viewport={{ once: true }}
-                      transition={{ duration: 1, delay: i * 0.2 }}
+                      transition={{ duration: 0.7, ease: "easeOut", delay: i * 0.1 }}
                       className={`h-full rounded ${stat.color === "cyan"
                         ? "bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,0.5)]"
                         : stat.color === "gold"
@@ -425,13 +426,13 @@ export default function Slide2() {
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
         className="w-full flex flex-col sm:flex-row items-center justify-between border-t border-cyan-500/30 pt-3 text-[9px] lg:text-[10px] text-cyan-500/80 font-mono z-10 gap-2 mt-2"
       >
-        <span className="tracking-widest">
+        <span className="tracking-widest text-center">
           CORE INTELNODE v4.81.0 // SECURITY CORE APPROVED
         </span>
-        <span className="tracking-[0.2em]">
+        <span className="tracking-[0.2em] text-center">
           COORDINATES: SLIDE_02_ACTIVE // COMPILING_SUCCESS
         </span>
       </motion.div>
